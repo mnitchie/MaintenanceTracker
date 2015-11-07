@@ -6,6 +6,12 @@ import config from './config/environment';
 var App;
 
 Ember.MODEL_FACTORY_INJECTIONS = true;
+Ember.ENV.RAISE_ON_DEPRECATION = true;
+Ember.ENV.LOG_STACKTRACE_ON_DEPRECATION = true;
+
+// Clearer stack traces on errors.
+// Remove for production
+Ember.run.backburner.DEBUG = true;
 
 App = Ember.Application.extend({
   modulePrefix: config.modulePrefix,
@@ -19,14 +25,7 @@ App = Ember.Application.extend({
   // step made while transitioning into a route, including
   // `beforeModel`, `model`, and `afterModel` hooks, and
   // information about redirects and aborted transitions
-  LOG_TRANSITIONS_INTERNAL: false,
-
-  Ember.ENV.RAISE_ON_DEPRECATION = true,
-  Ember.ENV.LOG_STACKTRACE_ON_DEPRECATION = true,
-
-  // Clearer stack traces on errors.
-  // Remove for production
-  Ember.run.backburner.DEBUG = true
+  LOG_TRANSITIONS_INTERNAL: false
 });
 
 loadInitializers(App, config.modulePrefix);
