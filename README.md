@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mnitchie/MaintenanceTracker.svg?branch=master)](https://travis-ci.org/mnitchie/MaintenanceTracker)
+
 # Paper is Evil
 
 I don't like having to sift through paper records to find how long its been since I changed my timing belt or how 
