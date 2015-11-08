@@ -1,0 +1,17 @@
+# this file is necessary so that npm doesn't use .gitignore;
+# gitignore ignores dist/ which *must* be included in the package.
+
+# temp files
+/tmp
+
+# dependencies
+/node_modules
+/bower_components
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage/*
+/libpeerconnection.log
+npm-debug.log
+testem.log
