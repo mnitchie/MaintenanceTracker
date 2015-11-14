@@ -1,11 +1,22 @@
 /* jshint node: true */
 
+const contentSecurityPolicy = { 
+  'default-src': "'none'", 
+  'script-src': "'self'", 
+  'font-src': "'self'", 
+  'connect-src': "'self' 10.211.55.5:*",
+  'img-src': "'self'",
+  'style-src': "'self' 'unsafe-inline'",
+  'media-src': "'self'"
+};
+
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'maintenance-tracker',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
+    contentSecurityPolicy: contentSecurityPolicy,
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -20,6 +31,8 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
+    ENV.contentSecurityPolicy = contentSecurityPolicy;
+    ENV.contentSecurityPolicy['script-src'] = "'self' 'unsafe-eval'";
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
