@@ -1,6 +1,5 @@
-import DS from 'ember-data';
+import WebApiAdapter from 'ember-web-api/adapters/web-api';
 
-export default DS.RESTAdapter.extend({
-	host: 'http://10.211.55.5:50000',
-	namespace: 'api'
+export default WebApiAdapter.extend({
+
 });
