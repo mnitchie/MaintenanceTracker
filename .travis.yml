@@ -21,3 +21,11 @@ install:
 
 script:
   - npm test
+deploy:
+  provider: npm
+  email: mikenitchie@gmail.com
+  api_key: $APIKey
+  on:
+    tags: true
+    branch: master
+    condition: "$TRAVIS_TAG =~ ^v.*$"

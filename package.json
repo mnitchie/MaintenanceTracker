@@ -9,6 +9,8 @@
   "scripts": {
     "prepublish": "bower install && ember build",
     "build": "ember build",
+    "preversion": "ember build",
+    "postversion": "git push && git push --tags",
     "start": "ember server",
     "test": "ember test"
   },
