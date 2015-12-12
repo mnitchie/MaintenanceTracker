@@ -8,16 +8,17 @@ export default Ember.Component.extend({
 
 	selectedYear: null,
 	selectedMake: null,
+	selectedModel: null,
 
 	validYears: Ember.computed(function() {
 		const years = [],
 		      currentYear = new Date().getFullYear();
 
 		for (let i = 1990; i <= currentYear; i++) {
-			years.push({
+			years.push(Ember.Object.create({
 				id: i,
 				description: i
-			});
+			}));
 		}
 
 		return years;
@@ -26,10 +27,10 @@ export default Ember.Component.extend({
 	validMakes: Ember.computed('makes', function() {
 		if (this.get('makes')) {
 			return this.get('makes').map((make) => {
-				return {
+				return Ember.Object.create({
 					id: make.get('id'),
 					description: make.get('name')
-				};
+				});
 			});
 		} else {
 			return null;
@@ -39,10 +40,10 @@ export default Ember.Component.extend({
 	validModels: Ember.computed('models', function() {
 		if (this.get('models')) {
 			return this.get('models').map((model) => {
-				return {
+				return Ember.Object.create({
 					id: model.get('id'),
 					description: model.get('name')
-				};
+				});
 			});
 		} else {
 			return null;
@@ -59,8 +60,11 @@ export default Ember.Component.extend({
 			this.set('selectedYear', year);
 			this.set('isLoading', true);
 
-			this.attrs['yearSelected'](year).then(makes => {
+			this.attrs['yearSelected'](year.get('id')).then(makes => {
 				this.set('makes', makes);
+
+				this.set('selectedMake', null);
+				this.set('selectedModel', null);
 				this.set('isLoading', false);
 			});
 		},
@@ -68,8 +72,10 @@ export default Ember.Component.extend({
 			this.set('selectedMake', make);
 			this.set('isLoading', true);
 
-			this.attrs['makeSelected'](this.get('selectedYear'), make).then(models => {
+			this.attrs['makeSelected'](this.get('selectedYear.id'), make.get('id')).then(models => {
 				this.set('models', models);
+
+				this.set('selectedModel', null);
 				this.set('isLoading', false);
 			});
 		},

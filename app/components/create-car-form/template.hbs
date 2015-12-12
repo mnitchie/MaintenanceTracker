@@ -5,12 +5,12 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-				<h4 class="modal-title" id="myModalLabel">Add a New Car</h4>
+				<h4 class="modal-title">Add a New Car</h4>
 			</div>
 			<div class="modal-body">
-				{{bootstrap-select default="Select Year" items=validYears selected=(action "yearSelected")}}
-				{{bootstrap-select default="Select Make" items=validMakes selected=(action "makeSelected")}}
-				{{bootstrap-select default="Select Model" items=validModels selected=(action "modelSelected")}}
+				{{bootstrap-select default="Select Year"  selected=selectedYear  items=validYears  changed=(action "yearSelected")}}
+				{{bootstrap-select default="Select Make"  selected=selectedMake  items=validMakes  changed=(action "makeSelected")}}
+				{{bootstrap-select default="Select Model" selected=selectedModel items=validModels changed=(action "modelSelected")}}
 
 				{{#if isLoading}}
 					<img src="images/ajax-loader.gif">
