@@ -3,8 +3,8 @@ import Ember from 'ember';
 export default Ember.Component.extend({
 	classNames: ['form-inline'],
 
-	makes: null,  // passed in
-	models: null, // passed in
+	makes: null,
+	models: null,
 
 	validYears: Ember.computed(function() {
 		const years = [],
@@ -48,10 +48,20 @@ export default Ember.Component.extend({
 
 	actions: {
 		yearSelected(year) {
-			this.attrs['yearSelected'](year);
+			this.set('isLoading', true);
+
+			this.attrs['yearSelected'](year).then(makes => {
+				this.set('makes', makes);
+				this.set('isLoading', false);
+			});
 		},
 		makeSelected(make) {
-			this.attrs['makeSelected'](make);
+			this.set('isLoading', true);
+
+			this.attrs['makeSelected'](make).then(models => {
+				this.set('models', models);
+				this.set('isLoading', false);
+			});
 		},
 		modelSelected(model) {
 			alert(model);

@@ -11,6 +11,10 @@
 				{{bootstrap-select default="Select Year" items=validYears selected=(action "yearSelected")}}
 				{{bootstrap-select default="Select Make" items=validMakes selected=(action "makeSelected")}}
 				{{bootstrap-select default="Select Model" items=validModels}}
+
+				{{#if isLoading}}
+					<img src="images/ajax-loader.gif">
+				{{/if}}
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

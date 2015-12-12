@@ -1,28 +1,14 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-	selectedYear: null,
-	selectedMake: null,
-
-	makes: null,
-	models: null,
-
 	actions: {
 		yearSelected(year) {
-			this.set('selectedYear', year);
-
-			this.store.query('carMake', {year: year}).then((makes) => {
-				this.set('makes', makes);
-			});
+			return this.store.query('carMake', {year: year});
 		},
-		makeSelected(make) {
-			this.set('selectedMake', make);
-
-			this.store.query('carModel', {
-				year: this.get('selectedYear'),
+		makeSelected(year, make) {
+			return this.store.query('carModel', {
+				year: year,
 				make: this.store.peekRecord('carMake', make).get('niceName')
-			}).then((models) => {
-				this.set('models', models);
 			});
 		}
 	}
