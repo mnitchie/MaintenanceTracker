@@ -5,10 +5,19 @@ export default Ember.Component.extend({
 	classNames: ['form-control'],
 
 	change: function(event) {
-		const value = event.target.value;
-		this.attrs['selected'](value);
+		this.attrs['changed'](Ember.Object.create({
+			id: event.target.value,
+			description: event.target.selectedOptions[0].text
+		}));
 	},
 
-	default: null, // passed in
-	items: null    // passed in
+	default: null,  // passed in
+	items: null,    // passed in
+	selected: null, // passed in
+
+	selectFirstOption: Ember.observer('selected', function() {
+		if (Ember.isEmpty(this.get('selected'))) {
+			this.$().val(this.get('default'));
+		}
+	})
 });
