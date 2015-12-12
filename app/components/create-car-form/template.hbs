@@ -10,7 +10,7 @@
 			<div class="modal-body">
 				{{bootstrap-select default="Select Year" items=validYears selected=(action "yearSelected")}}
 				{{bootstrap-select default="Select Make" items=validMakes selected=(action "makeSelected")}}
-				{{bootstrap-select default="Select Model" items=validModels}}
+				{{bootstrap-select default="Select Model" items=validModels selected=(action "modelSelected")}}
 
 				{{#if isLoading}}
 					<img src="images/ajax-loader.gif">
@@ -18,7 +18,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
+				<button type="button" class="btn btn-primary" disabled={{canSubmit}}>Save changes</button>
 			</div>
 		</div>
 	</div>

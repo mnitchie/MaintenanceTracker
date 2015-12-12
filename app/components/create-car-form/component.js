@@ -6,6 +6,9 @@ export default Ember.Component.extend({
 	makes: null,
 	models: null,
 
+	selectedYear: null,
+	selectedMake: null,
+
 	validYears: Ember.computed(function() {
 		const years = [],
 		      currentYear = new Date().getFullYear();
@@ -46,8 +49,14 @@ export default Ember.Component.extend({
 		}
 	}),
 
+	needsYear: Ember.computed.empty('selectedYear'),
+	needsMake: Ember.computed.empty('selectedMake'),
+	needsModel: Ember.computed.empty('selectedModel'),
+	canSubmit: Ember.computed.or('needsYear', 'needsMake', 'needsModel'),
+
 	actions: {
 		yearSelected(year) {
+			this.set('selectedYear', year);
 			this.set('isLoading', true);
 
 			this.attrs['yearSelected'](year).then(makes => {
@@ -56,15 +65,16 @@ export default Ember.Component.extend({
 			});
 		},
 		makeSelected(make) {
+			this.set('selectedMake', make);
 			this.set('isLoading', true);
 
-			this.attrs['makeSelected'](make).then(models => {
+			this.attrs['makeSelected'](this.get('selectedYear'), make).then(models => {
 				this.set('models', models);
 				this.set('isLoading', false);
 			});
 		},
 		modelSelected(model) {
-			alert(model);
+			this.set('selectedModel', model);
 		}
 	}
 });
