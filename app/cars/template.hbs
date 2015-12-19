@@ -1,1 +1,11 @@
-{{create-car-form yearSelected=(action 'yearSelected') makeSelected=(action 'makeSelected')}}
+{{create-car-form yearSelected=(action 'yearSelected') makeSelected=(action 'makeSelected') saveButtonClicked=(action 'carCreated')}}
+
+{{#each model as |car|}}
+	<div>
+		{{car.year}}
+		{{car.make.name}}
+		{{car.model.name}}
+	</div>
+{{/each}}
+
+{{outlet}}

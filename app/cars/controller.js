@@ -8,8 +8,15 @@ export default Ember.Controller.extend({
 		makeSelected(year, make) {
 			return this.store.query('carModel', {
 				year: year,
-				make: this.store.peekRecord('carMake', make).get('niceName')
+				make: make
 			});
+		},
+		carCreated(year, make, model) {
+			this.store.createRecord('car', {
+				year: year,
+				make: this.store.peekRecord('carMake', make),
+				model: this.store.peekRecord('carModel', model)
+			}).save();
 		}
 	}
 });

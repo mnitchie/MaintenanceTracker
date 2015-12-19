@@ -81,6 +81,9 @@ export default Ember.Component.extend({
 		},
 		modelSelected(model) {
 			this.set('selectedModel', model);
+		},
+		saveButtonClicked() {
+			this.attrs['saveButtonClicked'](this.get('selectedYear.id'), this.get('selectedMake.id'), this.get('selectedModel.id'));
 		}
 	}
 });
