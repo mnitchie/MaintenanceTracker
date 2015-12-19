@@ -1,9 +1,11 @@
 <div id="carSelectorContainer">
-	{{create-car-form yearSelected=(action 'yearSelected') makeSelected=(action 'makeSelected') saveButtonClicked=(action 'carCreated')}}
+	<div class="row-fluid">
+		{{create-car-form yearSelected=(action 'yearSelected') makeSelected=(action 'makeSelected') saveButtonClicked=(action 'carCreated')}}
 
-	{{#each model as |car|}}
-		{{car-selector car=car}}
-	{{/each}}
+		{{#each model as |car|}}
+			{{car-selector car=car}}
+		{{/each}}
+	</div>
 </div>
 
 {{outlet}}
