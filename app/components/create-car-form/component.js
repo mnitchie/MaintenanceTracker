@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-	classNames: ['form-inline'],
+	classNames: ['create-car-form, form-inline'],
 
 	makes: null,
 	models: null,
