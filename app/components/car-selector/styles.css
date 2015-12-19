@@ -5,3 +5,14 @@
 	margin: 1em;
 }
 
+&:hover {
+	cursor: pointer;
+	background-color: red;
+}
+
+img {
+	width: 180px;
+	margin-left:10px;
+	margin-right:10px;
+}
+
