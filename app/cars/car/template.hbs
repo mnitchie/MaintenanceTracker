@@ -1,11 +1,10 @@
 <ul class="nav nav-tabs">
-	<li class="active"><a href="#">Maintenance History</a></li>
-	<li><a href="#">Edit</a></li>
-	<li><a href="#">Add photo</a></li>
-	<li><a href="#">Details</a></li>
+	{{#nav-link-to 'cars.car.maintenance' model}}Maintenance History{{/nav-link-to}}
+	{{#nav-link-to 'cars.car.edit' model}}Edit{{/nav-link-to}}
+	{{!-- <li><a href="#">Add photo</a></li> --}}
+	{{!-- <li><a href="#">Details</a></li> --}}
 </ul>
 
-{{model.id}}
-{{model.year}}
-{{model.make.name}}
-{{model.model.name}}
+<div>
+	{{outlet}}
+</div>
