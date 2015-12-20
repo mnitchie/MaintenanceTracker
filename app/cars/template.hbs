@@ -1,9 +1,14 @@
 <div class="col-md-4">
+
 	{{create-car-form yearSelected=(action 'yearSelected') makeSelected=(action 'makeSelected') saveButtonClicked=(action 'carCreated')}}
 
-	{{#each model as |car|}}
-		{{car-selector car=car}}
-	{{/each}}
+	<div class="list-group">
+		{{#each model as |car|}}
+			{{#link-to "cars.car" car class="list-group-item"}}
+				{{car-selector car=car}}
+			{{/link-to}}
+		{{/each}}
+	</div>
 </div>
 
 <div class="col-md-8">
