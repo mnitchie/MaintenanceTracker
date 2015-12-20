@@ -1,4 +1,4 @@
-import { moduleForModel, test } from 'ember-qunit';
+/*import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('car', 'Unit | Serializer | car', {
   // Specify the other units that are required for this test.
@@ -13,3 +13,4 @@ test('it serializes records', function(assert) {
 
   assert.ok(serializedRecord);
 });
+*/
