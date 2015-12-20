@@ -1,3 +1,7 @@
-{{car.year}}
-{{car.make.name}}
-{{car.model.name}}
+{{#if car.name}}
+	{{car.name}}
+{{else}}
+	{{car.year}}
+	{{car.make.name}}
+	{{car.model.name}}
+{{/if}}

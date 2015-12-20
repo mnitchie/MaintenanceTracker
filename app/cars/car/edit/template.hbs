@@ -1,12 +1,19 @@
+<div>
+	{{model.year}} {{model.make.name}} {{model.model.name}}
+</div>
+
 <form>
 	<div class="form-group">
 		<label for="carNameInput">Car Name</label>
-		<input type="text" class="form-control" id="carNameInput" placeholder="Herbie">
+		{{!-- <input type="text" class="form-control" id="carNameInput" placeholder="Herbie"> --}}
+		{{one-way-input value=model.name update=(action "setCarName") class="form-control"}}
 	</div>
 	<div class="form-group">
 		<label for="carVinInput">Vin</label>
-		<input type="text" class="form-control" id="carVinInput" placeholder="17 characters">
+		{{one-way-input value=model.vin update=(action "setCarVin") class="form-control"}}
 	</div>
 </form>
 
+
+<button type="button" class="btn btn-primary" {{action "saveChanges"}}>Save Changes</button>
 <button type="button" class="btn btn-danger" {{action "deleteCar"}}>Delete this car</button>
