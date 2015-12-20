@@ -12,11 +12,15 @@ export default Ember.Controller.extend({
 			});
 		},
 		carCreated(year, make, model) {
-			this.store.createRecord('car', {
+			const car = this.store.createRecord('car', {
 				year: year,
 				make: this.store.peekRecord('carMake', make),
 				model: this.store.peekRecord('carModel', model)
-			}).save();
+			});
+
+			car.save().then(car => {
+				this.transitionToRoute('cars.car', car);
+			});
 		}
 	}
 });
