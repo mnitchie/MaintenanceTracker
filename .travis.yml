@@ -21,6 +21,14 @@ install:
 
 script:
   - npm test
+
+notifications:
+  - on_success: change
+  - on_failure: always
+
+before_deploy:
+  ember build --environment=production
+
 deploy:
   provider: npm
   email: mikenitchie@gmail.com
