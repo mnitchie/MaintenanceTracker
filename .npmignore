@@ -15,3 +15,20 @@
 /libpeerconnection.log
 npm-debug.log
 testem.log
+
+# source
+/app
+/config
+/tests
+/vendor
+.editorconfig
+.bowerrc
+.ember-cli
+.gitignore
+.jshintrc
+.npmrc
+.travis.yml
+bower.json
+ember-cli-build.js
+README.md
+testem.json
