@@ -1,6 +1,6 @@
 {
   "name": "maintenance-tracker",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "App for storing and sharing car maintenance information",
   "directories": {
     "doc": "doc",
