@@ -27,7 +27,7 @@ notifications:
   - on_failure: always
 
 before_deploy:
-  ember build --environment="production"
+  ember build --environment=production
 
 deploy:
   provider: npm
